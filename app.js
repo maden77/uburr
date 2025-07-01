@@ -59,7 +59,7 @@ async function askDeepSeek(question) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ${window.config.DEEPSEEK_API_KEY}',
+                'Authorization': 'Bearer ${api_key}',
             },
             body: JSON.stringify({
                 model: "deepseek-chat",
