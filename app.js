@@ -55,11 +55,13 @@ async function askDeepSeek(question) {
     try {
         // Ganti dengan API key dan endpoint DeepSeek yang sebenarnya
         // Ini hanya contoh, Anda perlu menyesuaikan dengan API DeepSeek yang tersedia
+        async function askDeepSeek(question) {
+    try {
         const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ${api_key}',
+                'Authorization': `Bearer ${apikey}`,
             },
             body: JSON.stringify({
                 model: "deepseek-chat",
@@ -76,6 +78,12 @@ async function askDeepSeek(question) {
                 temperature: 0.7
             })
         });
+        
+        // Periksa status response
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`API error: ${response.status} - ${errorText}`);
+        }
         
         const data = await response.json();
         return data.choices[0].message.content;
