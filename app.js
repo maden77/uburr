@@ -1,4 +1,6 @@
 // Inisialisasi
+require('dotenv').config();
+const apikey = process.env.DEEPSEEK_API_KEY;
 const character = document.getElementById('character');
 const speechBubble = document.getElementById('speech-bubble');
 const userInput = document.getElementById('user-input');
