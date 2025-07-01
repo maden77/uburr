@@ -55,7 +55,7 @@ async function askDeepSeek(question) {
     try {
         // Ganti dengan API key dan endpoint DeepSeek yang sebenarnya
         // Ini hanya contoh, Anda perlu menyesuaikan dengan API DeepSeek yang tersedia
-        const response = await fetch(window.config.API_ENDPOINT, {
+        const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
