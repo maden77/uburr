@@ -1,5 +1,6 @@
 # File environment 
 .env
+config.js
 config.json
 
 # Cache dan build
