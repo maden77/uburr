@@ -49,49 +49,43 @@ function showSpeech(text) {
         speechBubble.style.opacity = 0;
     }, 3000);
 }
-
-// Fungsi untuk mengirim pertanyaan ke DeepSeek AI
+// Fungsi untuk mengirim pertanyaan ke proxy server
 async function askDeepSeek(question) {
     try {
-        // Ganti dengan API key dan endpoint DeepSeek yang sebenarnya
-        // Ini hanya contoh, Anda perlu menyesuaikan dengan API DeepSeek yang tersedia
-        async function askDeepSeek(question) {
-    try {
-        const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+        const response = await fetch('http://localhost:3001/ask-ubur', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apikey}`,
+            headers: { 
+                'Content-Type': 'application/json' 
             },
             body: JSON.stringify({
                 model: "deepseek-chat",
                 messages: [
-                    {
-                        role: "system",
-                        content: "Kamu adalah Ubur, teman bicara yang ramah dan membantu. Jawablah dengan santai dan friendly."
+                    { 
+                        role: "system", 
+                        content: "Kamu adalah Ubur, teman bicara yang ramah dan membantu. Jawablah dengan santai dan friendly." 
                     },
-                    {
-                        role: "user",
-                        content: question
+                    { 
+                        role: "user", 
+                        content: question 
                     }
                 ],
                 temperature: 0.7
             })
         });
         
-        // Periksa status response
+        // Jika response tidak ok, lempar error
         if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`API error: ${response.status} - ${errorText}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
         return data.choices[0].message.content;
     } catch (error) {
-        console.error('Error calling DeepSeek API:', error);
-        return "Maaf, aku sedang tidak bisa menjawab sekarang. Coba lagi nanti ya!";
+        console.error('Error:', error);
+        return "Maaf, aku sedang tidak bisa menjawab. Coba lagi nanti ya!";
     }
 }
+
 
 // Event listeners
 sendBtn.addEventListener('click', async () => {
