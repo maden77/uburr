@@ -1,1 +1,36 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanya Ubur - AI Teman Bicara</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a89dc">
+</head>
+<body>
+    <div class="container">
+        <div class="character-container">
+            <img src="assets/ubur.png" alt="Ubur" id="character" class="idle">
+            <div class="speech-bubble" id="speech-bubble"></div>
+        </div>
+        
+        <div class="chat-container">
+            <div id="chat-history" class="chat-history"></div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Tanyakan sesuatu pada Ubur...">
+                <button id="send-btn">Kirim</button>
+                <button id="listen-btn">🎤</button>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <button id="feed-btn">Kasih Makan</button>
+            <button id="play-btn">Main</button>
+            <button id="clean-btn">Bersihkan</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
